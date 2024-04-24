@@ -15,7 +15,6 @@
                 <h3>
                     {{ $project->name }}
                 </h3>
-                <small></small>
                 <span class="badge bg-transparent border border-2 border text-black mb-4">{{$project->type?->name}}</span>
 
                 <br>

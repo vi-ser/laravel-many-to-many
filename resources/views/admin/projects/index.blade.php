@@ -20,9 +20,10 @@
             <li class="card" style="width: 18rem;">
                 <img src="{{asset('storage/' . $project->src)}}" class="card-img-top object-fit-cover" alt="{{ $project->name }}" style="height: 220px">
                 <div class="card-body">
+                <span class="badge bg-transparent border border-2 border text-black mb-4">{{$project->type?->name}}</span>
                   <h5 class="card-title">{{ $project->name }}</h5>
                   <p class="card-text">{{ $project->description }}</p>
-                  <a href="{{ route('admin.projects.show', $project->id) }}" class="btn btn-secondary">Scopri</a>
+                  <a href="{{ route('admin.projects.show', $project->id) }}" class="btn btn-dark">Scopri</a>
                 </div>
             </li>
       

@@ -106,7 +106,7 @@
             </div>
             
 
-            <button type="submit" class="btn btn-primary mt-3">Salva</button>
+            <button type="submit" class="btn btn-dark mt-3">Salva</button>
         </form>
        
     </div>
