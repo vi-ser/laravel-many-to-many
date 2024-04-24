@@ -75,8 +75,9 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         $types = Type::all();
+        $technologies = Technology::all();
 
-        return view('admin.projects.edit', compact('project', 'types'));
+        return view('admin.projects.edit', compact('project', 'types', 'technologies'));
     }
 
     /**
@@ -97,6 +98,9 @@ class ProjectController extends Controller
         $project->date = $request->date;
 
         $project->save();
+
+        $project->technologies()->sync($request->technologies);
+
 
         return redirect()->route('admin.projects.show', $project->id);
     }

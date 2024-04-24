@@ -16,7 +16,7 @@
                     {{ $project->name }}
                 </h3>
                 <small></small>
-                <span class="badge bg-black text-white mb-4">{{$project->type?->name}}</span>
+                <span class="badge bg-transparent border border-2 border text-black mb-4">{{$project->type?->name}}</span>
 
                 <br>
 
@@ -28,12 +28,11 @@
 
                 <br>
                 <br>
+                <strong>Tecnologie utilizzate</strong><br>
 
-                <strong>Tecnologie utilizzate</strong>
-                <br>
-                <span>
-                    {{ $project->technology }}
-                </span>
+                @foreach ($project->technologies as $technology)
+                <span class="badge rounded-pill bg-black me-1">{{$technology->title}}</span>
+                @endforeach
 
                 <br>
                 <br>
