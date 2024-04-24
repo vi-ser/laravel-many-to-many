@@ -54,16 +54,6 @@
             </div>
 
             <div class="mb-3">
-                <label for="technology" class="form-label">Tecnologie utilizzate</label>
-                <input type="text" class="form-control @error('technology') is-invalid @enderror" id="technology" name="technology" value="{{old('technology')}}">
-                @error('technology')
-                <div class="invalid-feedback">
-                    {{$message}}
-                </div>
-                @enderror
-            </div>
-
-            <div class="mb-3">
                 <label for="github_link" class="form-label">Link progetto</label>
                 <input type="text" class="form-control @error('github_link') is-invalid @enderror" id="github_link" name="github_link" value="{{old('github_link')}}" required>
                  @error('github_link')
@@ -81,6 +71,26 @@
                   {{$message}}
                 </div>
                 @enderror
+            </div>
+
+            <div class="mb-3">
+                <label class="mb-2" for="">Tecnologie utilizzate</label>
+                <div class="d-flex gap-4">
+                    @foreach($technologies as $technology)
+                    <div class="form-check ">
+                        <input 
+                            type="checkbox" 
+                            name="technologies[]"
+                            value="{{$technology->id}}" 
+                            class="form-check-input" 
+                            id="technology-{{$technology->id}}"
+    
+                            {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }}
+                        > 
+                        <label for="technology-{{$technology->id}}" class="form-check-label">{{$technology->title}}</label>
+                    </div>
+                    @endforeach
+                </div>
             </div>
             
 

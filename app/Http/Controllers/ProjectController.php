@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
+use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Storage;
@@ -28,8 +29,9 @@ class ProjectController extends Controller
     {
 
         $types = Type::all();
+        $technologies = Technology::all();
 
-        return view('admin/projects/create', compact('types'));
+        return view('admin/projects/create', compact('types', 'technologies'));
     }
 
     /**
@@ -51,6 +53,8 @@ class ProjectController extends Controller
         $newProject->date = $request->date;
 
         $newProject->save();
+
+        $newProject->technologies()->attach($request->technologies);
 
         return redirect()->route('admin.projects.index');
     }
